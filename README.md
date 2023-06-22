@@ -25,6 +25,9 @@
 ![Github Actions](https://img.shields.io/badge/Github%20Actions-2088FF?style=flat&logo=GithubActions&logoColor=white)
 ![AWS Codedeploy](https://img.shields.io/badge/AWS%20Codedeploy-yellowgreen?style=flat)
 
+### Monitoring
+<img src="https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=Prometheus&logoColor=white"/> <img src="https://img.shields.io/badge/Grafana-F46800?style=flat&logo=Grafana&logoColor=white"/>
+
 
 ## 🗂️ 팀 관리 노션
 [노션 링크](https://yielding-effect-d6a.notion.site/Second-Hand-team06-2ffd62e597074a5a89781298be87713a?pvs=4)
