@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Form</title>
+</head>
+
+<body>
+<h1>Create a New Post</h1>
+
+<form action="/posts" method="post" enctype="multipart/form-data">
+    <!-- Title -->
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required maxlength="63" minlength="1">
+    <br>
+
+    <!-- Region ID -->
+    <label for="regionId">Region ID:</label>
+    <input type="number" id="regionId" name="regionId" required>
+    <br>
+
+    <!-- Category ID -->
+    <label for="categoryId">Category ID:</label>
+    <input type="number" id="categoryId" name="categoryId" required>
+    <br>
+
+    <!-- Badge ID -->
+    <label for="badgeId">Badge ID:</label>
+    <input type="number" id="badgeId" name="badgeId">
+    <br>
+
+    <!-- Price -->
+    <label for="price">Price:</label>
+    <input type="number" id="price" name="price" min="0" max="100000000">
+    <br>
+
+    <!-- Content -->
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" required minlength="1" maxlength="1000"></textarea>
+    <br>
+
+    <!-- Photos -->
+    <label for="photos">Photos (max 10 files):</label>
+    <input type="file" id="photos" name="photos" multiple accept="image/*" >
+    <br>
+
+    <!-- Submit Button -->
+    <input type="submit" value="Submit">
+</form>
+</body>
+
+</html>
