@@ -28,6 +28,8 @@
 ### Monitoring
 <img src="https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=Prometheus&logoColor=white"/> <img src="https://img.shields.io/badge/Grafana-F46800?style=flat&logo=Grafana&logoColor=white"/>
 
+## 💡 데모 보러가기
+[second-hand 데모 보러가기](https://github.com/second-hand-team06/second-hand/wiki/%EA%B8%B0%EB%8A%A5-%EB%8D%B0%EB%AA%A8)
 
 ## 🗂️ 팀 관리 노션
 [노션 링크](https://yielding-effect-d6a.notion.site/Second-Hand-team06-2ffd62e597074a5a89781298be87713a?pvs=4)
