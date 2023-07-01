@@ -1,18 +1,14 @@
 name: FE codedeploy
 
-# main 브런치에 push가 되면 아래의 flow가 실행됩니다.
+# release 브런치에 push가 되면 아래의 flow가 실행됩니다. cicde test
 on:
   push:
     branches: [ "release-fe" ]
    
 # flow에서 사용할 변수 같은 느낌입니다.
 env:
-  AWS_REGION: ap-northeast-2
-  S3_BUCKET_NAME: issue-tracker-cicd
-  CODE_DEPLOY_APPLICATION_NAME: codesquad-project
-  CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: web-cd
-  working-directory: ./fe # 이 코드는 제 프로젝트 경로를 맞춰주기 위해 적어주었습니다. 필요하시면 적으세요 !
-
+  working-directory: ./fe 
+  
 permissions:
   contents: read
 
@@ -24,18 +20,19 @@ jobs:
 
     steps:
 
-      
-    # AWS 인증
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: ${{ env.AWS_REGION }}
-
     # 1) 기본 체크아웃
     - name: Checkout
       uses: actions/checkout@v3
+
+    - uses: actions/checkout@v3
+    - run: touch ./fe/.env.development
+    - run: echo "${{ secrets.FE_DEV }}" > ./fe/.env.development
+    - run: cat ./fe/.env.development
+
+    - uses: actions/checkout@v3
+    - run: touch ./fe/.env.production
+    - run: echo "${{ secrets.FE_PROD }}" > ./fe/.env.production
+    - run: cat ./fe/.env.production
     
     # 2) node 셋팅
     - name: Set node@v1
@@ -62,22 +59,23 @@ jobs:
       run: npm run build
       working-directory: ${{ env.working-directory }}
 
+    - name: check current directory
+      run: ls
+    
 
-        
-    # AWS S3에 업로드
-    - name: Upload to AWS S3
+    - name: docker build and push
       run: |
-        aws deploy push \
-          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
-          --ignore-hidden-files \
-          --s3-location s3://$S3_BUCKET_NAME/$GITHUB_SHA.zip \
-          --source .
-          
-    # AWS EC2에 Deploy
-    - name: Deploy to AWS EC2 from S3
-      run: |
-        aws deploy create-deployment \
-          --application-name ${{ env.CODE_DEPLOY_APPLICATION_NAME }} \
-          --deployment-config-name CodeDeployDefault.AllAtOnce \
-          --deployment-group-name ${{ env.CODE_DEPLOY_DEPLOYMENT_GROUP_NAME }} \
-          --s3-location bucket=$S3_BUCKET_NAME,key=$GITHUB_SHA.zip,bundleType=zip
+        sudo docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        sudo docker build --platform amd64 --build-arg DEPENDENCY=build/dependency -f ./Dockerfile -t ${{secrets.DOCKER_USERNAME}}/birdieweb .
+        sudo docker push ${{ secrets.DOCKER_USERNAME }}/birdieweb
+
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ubuntu
+        key: ${{ secrets.KEY }}
+        script: |
+          sudo docker rm -f birdieweb
+          sudo docker pull ${{ secrets.DOCKER_USERNAME }}/birdieweb 
+          sudo docker run -d --rm --name birdieweb -p 80:80 -p 8080:8080 birdiehyun/birdieweb
