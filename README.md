@@ -34,6 +34,11 @@
 ## 🗂️ 팀 관리 노션
 [노션 링크](https://yielding-effect-d6a.notion.site/Second-Hand-team06-2ffd62e597074a5a89781298be87713a?pvs=4)
 
+## Infra
+![image](https://github.com/second-hand-team06/second-hand/assets/71162390/3101b47b-6cd5-4fb0-b8d5-1c21d462e6cc)
+
+
+
 ## 📜 그라운드 룰
 
 ### 1. 출석은 9시 55분 기준으로
