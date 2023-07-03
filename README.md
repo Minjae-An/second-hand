@@ -35,7 +35,8 @@
 [노션 링크](https://yielding-effect-d6a.notion.site/Second-Hand-team06-2ffd62e597074a5a89781298be87713a?pvs=4)
 
 ## Infra
-![image](https://github.com/second-hand-team06/second-hand/assets/71162390/3101b47b-6cd5-4fb0-b8d5-1c21d462e6cc)
+![‎second-hand-infra ‎001](https://github.com/second-hand-team06/second-hand/assets/71162390/3b5bd2ca-7073-4207-a676-da9d59e88e34)
+
 
 
 
