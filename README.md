@@ -34,10 +34,10 @@
 ## 🗂️ 팀 관리 노션
 [노션 링크](https://yielding-effect-d6a.notion.site/Second-Hand-team06-2ffd62e597074a5a89781298be87713a?pvs=4)
 
-## Infra
+## ⚙️ Infrastructure & CI/CD pipeline
 ![‎second-hand-infra ‎001](https://github.com/second-hand-team06/second-hand/assets/71162390/38e8ecf4-3491-486c-b2b6-f99d1f7ad2eb)
 
-## ERD Diagram
+## 🐬 ERD Diagram
 <img width="564" alt="image" src="https://github.com/second-hand-team06/second-hand/assets/71162390/d0af7863-233d-4b98-8029-5578791c7565">
 
 
